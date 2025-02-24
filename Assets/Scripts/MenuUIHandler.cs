@@ -16,10 +16,11 @@ using UnityEditor;
 public class MenuUIHandler : MonoBehaviour
 {
     [SerializeField] TMP_InputField userNameField;
+    [SerializeField] TMP_Text bestScores;
 
     private void Start()
     {
-
+        WriteBestScores();
     }
 
     // Main game scene will be load when you click on the play button
@@ -31,6 +32,10 @@ public class MenuUIHandler : MonoBehaviour
     // You will exit the game when you press the exit button
     public void ExitButton()
     {
+        // First we save the data
+        Persistent_manager.Instance.SaveData();
+        
+        // And then we close the game
         #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
         #else
@@ -43,5 +48,12 @@ public class MenuUIHandler : MonoBehaviour
     {
         Persistent_manager.Instance.userName = userNameField.text;
         Debug.Log("User name: " + Persistent_manager.Instance.userName);
+    }
+
+    // To write the best scores board
+    public void WriteBestScores()
+    {
+        bestScores.text = "Best scores:\n\n" + Persistent_manager.Instance.data.GetRecord();
+        //Debug.Log(Persistent_manager.Instance.data.GetRecord()); 
     }
 }

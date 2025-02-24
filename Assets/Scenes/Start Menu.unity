@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userNameField: {fileID: 1898287779}
+  bestScores: {fileID: 452266068}
 --- !u!4 &885697278
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,6 +1121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: 
+  data:
+    topScores: []
 --- !u!4 &1204607897
 Transform:
   m_ObjectHideFlags: 0

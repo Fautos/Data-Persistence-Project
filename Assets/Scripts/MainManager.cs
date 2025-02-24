@@ -62,6 +62,10 @@ public class MainManager : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
@@ -74,12 +78,16 @@ public class MainManager : MonoBehaviour
     void Filltexts()
     {
         PlayerText.text = "Player:\n" + Persistent_manager.Instance.userName;
-        BestScoreText.text = "Best score:\n"+ "Patata : 10000";
+        BestScoreText.text = "Best score:\n"+ Persistent_manager.Instance.data.GetBest().Item1 + ": " + Persistent_manager.Instance.data.GetBest().Item2;
     }
 
     public void GameOver()
     {
         m_GameOver = true;
+        // Save the record
+        Persistent_manager.Instance.data.AddScore(Persistent_manager.Instance.userName, m_Points);
+
+        // Active the gameover screen
         GameOverText.SetActive(true);
     }
 }
