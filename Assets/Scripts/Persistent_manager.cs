@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Policy;
+// Comment if WebGL
+//using System.Security.Policy;
 using UnityEngine;
 using System.IO;
 using System.Runtime.CompilerServices;
