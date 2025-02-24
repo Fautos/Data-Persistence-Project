@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
     public int LineCount = 6;
     public Rigidbody Ball;
 
-    public Text ScoreText;
+    public Text ScoreText, BestScoreText, PlayerText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -36,6 +36,9 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        // To fill the texts with the initial info
+        Filltexts();
     }
 
     private void Update()
@@ -66,6 +69,12 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+    }
+
+    void Filltexts()
+    {
+        PlayerText.text = "Player:\n" + Persistent_manager.Instance.userName;
+        BestScoreText.text = "Best score:\n"+ "Patata : 10000";
     }
 
     public void GameOver()
