@@ -26,6 +26,10 @@ public class MenuUIHandler : MonoBehaviour
     // Main game scene will be load when you click on the play button
     public void PlayButton()
     {
+        if (userNameField.text.Length == 0)
+        {
+            Persistent_manager.Instance.userName = "Player";
+        }
         SceneManager.LoadScene(1);
     }
 
@@ -34,7 +38,7 @@ public class MenuUIHandler : MonoBehaviour
     {
         // First we save the data
         Persistent_manager.Instance.SaveData();
-        
+
         // And then we close the game
         #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
